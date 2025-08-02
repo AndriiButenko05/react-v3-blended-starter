@@ -14,7 +14,7 @@ export default function Form({ onSubmit }: FormProps) {
       toast.error("Please, write correct search name");
       return;
     }
-    onSubmit(query);
+    onSubmit(query.trim());
   };
   return (
     <form className={style.form} action={handleSubmit}>
