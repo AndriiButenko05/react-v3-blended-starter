@@ -9,12 +9,12 @@ interface FormProps {
 
 export default function Form({ onSubmit }: FormProps) {
   const handleSubmit = (formData: FormData) => {
-    const query = formData.get("search") as string;
-    if (query.trim() === "") {
+    const query = (formData.get("search") as string)?.trim();
+    if (query === "") {
       toast.error("Please, write correct search name");
       return;
     }
-    onSubmit(query.trim());
+    onSubmit(query);
   };
   return (
     <form className={style.form} action={handleSubmit}>
