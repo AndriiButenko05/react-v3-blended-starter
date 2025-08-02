@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { Photo } from "../types/photo";
 
 const myKey = import.meta.env.VITE_API_KEY;
 axios.defaults.baseURL = "https://api.pexels.com/v1/";
@@ -7,8 +8,11 @@ axios.defaults.params = {
   orientation: "landscape",
 };
 
-export const getPhotos = async (query: string) => {
-  const response = await axios.get(`search?query=${query}`);
+interface GetPhotosResponse {
+  photos: Photo[];
+}
 
+export const getPhotos = async (query: string): Promise<Photo[]> => {
+  const response = await axios.get<GetPhotosResponse>(`search?query=${query}`);
   return response.data.photos;
 };

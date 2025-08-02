@@ -46,6 +46,7 @@ export default function App() {
   }
   function closeModal() {
     setIsModalOpen(false);
+    setPhoto(null)
   }
 
   return (
@@ -59,7 +60,7 @@ export default function App() {
           )}
           {isError && <Text children={"Ooops, something went wrong"} />}
           <PhotosGallery onClick={openModal} photos={photos} />
-          {isModalOpen && photo && <Modal onClose={closeModal} photo={photo} />}
+          {photo && <Modal onClose={closeModal} photo={photo} />}
         </Container>
       </Section>
     </>
