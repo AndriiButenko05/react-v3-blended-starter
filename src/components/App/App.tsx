@@ -20,7 +20,6 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [photo, setPhoto] = useState<Photo | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isError, setIsError] = useState(false);
   async function handleSearch(query: string) {
     try {
@@ -41,11 +40,9 @@ export default function App() {
     }
   }
   function openModal(photo: Photo) {
-    setIsModalOpen(true);
     setPhoto(photo);
   }
   function closeModal() {
-    setIsModalOpen(false);
     setPhoto(null)
   }
 
