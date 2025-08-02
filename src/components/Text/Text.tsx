@@ -8,7 +8,7 @@ interface TextProps {
 
 export default function Text({
   children,
-  textAlign = "",
+  textAlign = "center",
   marginBottom = "0",
 }: TextProps) {
   return (
