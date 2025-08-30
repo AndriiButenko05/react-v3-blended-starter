@@ -12,6 +12,7 @@
   border-radius: 8px;
   border: 1px solid #fff;
   color: #fff;
+  transition: background-color 250ms ease-in-out;
 }
 
 .pagination li a {
@@ -27,16 +28,16 @@
 
 .pagination li:hover {
   border-radius: 8px;
-  background-color: #368a01;
+  background-color: #023020;
 }
 
 .pagination li.active:hover {
   border-radius: 8px;
-  background-color: #368a01;
+  background-color: #023020;
 }
 
 .active {
-  background-color: #368a01;
+  background-color: #023020;
 }
 
 .active a {

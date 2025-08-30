@@ -35,16 +35,17 @@
   font-weight: 600;
   line-height: normal;
   border-radius: 8px;
-  background: #368a01;
+  background: black;
   display: flex;
   height: 44px;
   padding: 8px 24px;
   justify-content: center;
   align-items: center;
-  border: 1px solid #368a01;
+  border: 1px solid whitesmoke;
   cursor: pointer;
+  transition: border 250ms ease-in-out;
 }
 
 .button:hover {
-  border: 1px solid #fff;
+  border: 1px solid #023020;
 }

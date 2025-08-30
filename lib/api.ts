@@ -20,7 +20,6 @@ export const fetchPosts = async ({
       userId,
       ...(searchText !== '' && { q: searchText }),
       _page: page,
-      _limit: 8,
     },
   });
   const totalCount = Number(response.headers['x-total-count']);
@@ -53,8 +52,17 @@ export const deletePost = async (postId: number) => {
   return response.data;
 };
 
-export const fetchPostById = async () => {};
+export const fetchPostById = async (postId: string) => {
+  const response = await axios.get<Post>(`/posts/${postId}`);
+  return response.data;
+};
 
-export const fetchUsers = async () => {};
+export const fetchUsers = async () => {
+  const response = await axios.get<User[]>('/users');
+  return response.data;
+};
 
-export const fetchUserById = async () => {};
+export const fetchUserById = async (userid:string | undefined) => {
+   const response = await axios.get<User>(`/users/${userid}`);
+  return response.data;
+};

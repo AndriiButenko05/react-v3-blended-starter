@@ -13,13 +13,13 @@ import Modal from '@/components/Modal/Modal';
 import { Post } from '@/types/post';
 import EditPostForm from '@/components/EditPostForm/EditPostForm';
 import CreatePostForm from '@/components/CreatePostForm/CreatePostForm';
+import { Toaster } from 'react-hot-toast';
 
 interface PostsClientProps {
-  initialData: { posts: Post[]; totalCount: number };
-  userId: string;
+  userId: string | undefined;
 }
 
-export default function PostsClient({ initialData, userId }: PostsClientProps) {
+export default function PostsClient({ userId }: PostsClientProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -34,7 +34,7 @@ export default function PostsClient({ initialData, userId }: PostsClientProps) {
         ...(userId !== 'All' && { userId }),
       }),
     placeholderData: keepPreviousData,
-    initialData,
+    refetchOnMount: false,
   });
 
   const toggleModal = () => setIsModalOpen((prev) => !prev);
@@ -49,7 +49,7 @@ export default function PostsClient({ initialData, userId }: PostsClientProps) {
     setSearchQuery(newQuery);
   }, 300);
 
-  const totalPages = Math.ceil(data.totalCount / 8);
+  const totalPages = Math.ceil((data?.totalCount ?? 0) / 10);
   const posts = data?.posts ?? [];
 
   return (
@@ -58,7 +58,7 @@ export default function PostsClient({ initialData, userId }: PostsClientProps) {
         <section className={css.postsSection}>
           <header className={css.toolbar}>
             <SearchBox onSearch={changeSearchQuery} />
-            {totalPages > 1 && (
+            {totalPages && totalPages > 1 && (
               <Pagination
                 totalPages={totalPages}
                 currentPage={currentPage}
@@ -75,6 +75,7 @@ export default function PostsClient({ initialData, userId }: PostsClientProps) {
               Create post +
             </button>
           </header>
+          <Toaster position="top-right" reverseOrder={false} />
           {isModalOpen && (
             <Modal onClose={toggleModal}>
               {editedPost ? (

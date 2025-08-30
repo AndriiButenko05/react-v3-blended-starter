@@ -1,13 +1,10 @@
 .header {
   height: 75px;
-  padding: 0px 43px;
   display: flex;
-
   justify-content: space-between;
   align-items: center;
-  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
-  border-bottom: 1px solid #368a01;
+  border-bottom: 1px solid black;
 }
 
 .headerContainer {
@@ -19,9 +16,8 @@
 }
 
 .headerLink {
-  color: #368a01;
+  color: whitesmoke;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Knewave;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -40,7 +36,6 @@
 
 .navigationLink {
   display: flex;
-
   padding: 8px 24px 8px 24px;
   justify-content: center;
   align-items: center;
@@ -49,15 +44,14 @@
   border: 1px solid #fff;
   background-color: transparent;
   color: #fff;
-
-  font-family: 'Open Sans';
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   cursor: pointer;
+  transition: background-color 250ms ease-in-out;
 }
 
 .navigationLink:hover {
-  background-color: #368a01;
+  background-color: #023020;
 }

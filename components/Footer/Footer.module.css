@@ -1,8 +1,6 @@
 /* components/Footer.module.css */
 
 .footer {
-  border-top: 1px solid #368a01;
-  background: #363638;
   display: flex;
   padding: 20px 0px;
 
@@ -37,9 +35,10 @@
   line-height: normal;
 }
 .footer a {
-  color: #368a01;
+  color: #f5f5f5;
   font-weight: 600;
   text-decoration: none;
+  transition: text-decoration 250ms ease-in-out;
 }
 
 .footer a:hover {

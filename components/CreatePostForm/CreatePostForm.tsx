@@ -7,6 +7,7 @@ import { createPost, fetchUsers } from '@/lib/api';
 
 import css from './CreatePostForm.module.css';
 import { User } from '@/types/user';
+import toast from 'react-hot-toast';
 
 const PostSchema = Yup.object().shape({
   title: Yup.string()
@@ -34,12 +35,18 @@ const initialValues: FormValues = {
 
 export default function CreatePostForm({ onClose }: PostFormProps) {
   const queryClient = useQueryClient();
-
   const { mutate, isPending } = useMutation({
     mutationFn: createPost,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
-      alert('Post created successfully!');
+      toast('Post created!', {
+        icon: '✅',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       onClose();
     },
   });
@@ -51,7 +58,6 @@ export default function CreatePostForm({ onClose }: PostFormProps) {
 
   const handleSubmit = (values: FormValues, actions: FormikHelpers<FormValues>) => {
     mutate(values);
-
     actions.resetForm();
   };
 
