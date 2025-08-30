@@ -47,7 +47,7 @@ export default function PostsClient({ userId }: PostsClientProps) {
   const changeSearchQuery = useDebouncedCallback((newQuery: string) => {
     setCurrentPage(1);
     setSearchQuery(newQuery);
-  }, 300);
+  }, 500);
 
   const totalPages = Math.ceil((data?.totalCount ?? 0) / 10);
   const posts = data?.posts ?? [];
